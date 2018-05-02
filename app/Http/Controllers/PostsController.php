@@ -11,6 +11,9 @@ use App\http\Requests;
 use DB;
 use Redirect;
 use Session;
+use Excel;
+use App\Exports;
+
 
 
 class PostsController extends Controller
@@ -22,20 +25,25 @@ class PostsController extends Controller
      */
     public function index(Request $request)
     {
-
-
         $s = $request->input('s');
 
-        $filetable = Post::where('isActive', 'Active')
+        $filetable = Post::where('isActive', 1)
         ->search($s)
-        ->paginate(10);
-        $deactivate = Post::where('isActive','notActive')
+        ->paginate(12);
+        $deactivate = Post::where('isActive',0)
         ->search($s)
-        ->paginate(10);
+        ->paginate(5);
         return View('filetable.index', compact('filetable', 'deactivate', '$s'));
-
-
     }
+
+    public function bilang()
+    {
+      $title = 'SMDI Library!';
+      $active = Post::where('isActive', 1)->count();;
+      $inActive = Post::where('isActive', 0)->count();;
+      return View('pages.home', compact('active', 'inActive', 'title'));
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -65,8 +73,7 @@ class PostsController extends Controller
         'year' => 'required',
         'pc' => 'required',
         'client' => 'required',
-        // 'type' => 'required',
-        'othersText' => 'required',
+        'type' => 'required',
         'longhi' => 'required',
         'lati' => 'required',
         'publish_at' => 'nullable|date',
@@ -83,11 +90,10 @@ class PostsController extends Controller
           $filetable->Weather = $request->input('weather');
           $filetable->PC = $request->input('pc');
           $filetable->Client = $request->input('client');
-          // $filetable->Type = $request->type;
-          $filetable->Type = $request->input('othersText');
+          $filetable->Type = $request->input('type');
           $filetable->Longitude = $request->input('longhi');
           $filetable->Latitude = $request->input('lati');
-          $active = 'Active';
+          $active = 1;
           $filetable->isActive = $request->input('$isActive', $active);
 
           $filetable->save();
@@ -102,10 +108,11 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($ID)
+    public function show($id)
     {
+      $filetable = Post::findOrFail($id);
 
-        // return view('layout.404');
+      return view('layout.showModal', ['filetable' => $filetable]);
     }
 
     /**
@@ -114,24 +121,10 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(request $request)
+    public function edit($id)
     {
-      $filetable = Post::find($request->ID);
-      $filetable->Station_Code = $request->Station_Code;
-      $filetable->Station_Name = $request->Station_Name;
-      $filetable->Location = $request->Location;
-      $filetable->Month = $request->Month;
-      $filetable->Day = $request->Day;
-      $filetable->Year = $request->Year;
-      $filetable->Weather = $request->Weather;
-      $filetable->PC = $request->PC;
-      $filetable->Client = $request->Client;
-      $filetable->Type = $request->Type;
-      $filetable->Longitude = $request->Longitude;
-      $filetable->Latitude = $request->Latitude;
-      $filetable->save();
-      return response()->json($filetable);
-
+      $filetable = Post::find($id);
+      return view('filetable.edit', compact('filetable'));
     }
 
     /**
@@ -141,9 +134,42 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $ID)
+    public function update(Request $request, $id)
     {
-        //
+      request()->validate([
+        'sCode' => 'required',
+        'sName' => 'required',
+        'loc' => 'required',
+        'month' => 'required',
+        'day' => 'required',
+        'year' => 'required',
+        'pc' => 'required',
+        'client' => 'required',
+        'type' => 'required',
+        'longhi' => 'required',
+        'lati' => 'required',
+        'publish_at' => 'nullable|date',
+        'publish_at' => 'nullable|date',
+      ]);
+
+        $filetable = Post::find($id);
+        $filetable->Station_Code = $request->input('sCode');
+        $filetable->Station_Name = $request->input('sName');
+        $filetable->Location = $request->input('loc');
+        $filetable->Month = $request->input('month');
+        $filetable->Day = $request->input('day');
+        $filetable->Year = $request->input('year');
+        $filetable->Weather = $request->input('weather');
+        $filetable->PC = $request->input('pc');
+        $filetable->Client = $request->input('client');
+        $filetable->Type = $request->input('type');
+        $filetable->Longitude = $request->input('longhi');
+        $filetable->Latitude = $request->input('lati');
+        $active = '1';
+        $filetable->isActive = $request->input('$isActive', $active);
+        $filetable->save();
+        return redirect('/filetable')->with('success', 'Post Updated!');
+
     }
 
     /**
@@ -152,44 +178,51 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function destroy($ID)
-    // {
-    //   $filetable = Post::find($ID)->update([
-    //     'isActive' => 'notActive'
-    //   ]);
-    //
-    //   return redirect('/filetable')->with('success', $ID);
-    // }
-    //
-    // public function reactivate($ID)
-    // {
-    //   $filetable = Post::find($ID)->update([
-    //     'isActive' => 'Active'
-    //   ]);
-    //
-    //   return redirect('/filetable')->with('success', $ID);
-    // }
 
 
-  public function destroy($ID)
+
+     public function destroy(Request $request, $id)
       {
 
-        $filetable = Post::findOrFail($ID);
-        // return $filetable;
-        $filetable->update(['isActive' => 'notActive']);
-        return redirect('/filetable')->with('success', $ID);
+        $filetable = Post::findOrFail($id);
+
+        $active = '0';
+        $filetable->isActive = $request->input('$isActive', $active);
+        $filetable->save();
+
+        return redirect('/filetable')->with('success', 'Record Successfully Deactivated!');
       }
 
-      public function reactivate($ID)
+      public function reactivate(Request $request, $id)
       {
 
-        $filetable = Post::findOrFail($ID);
+        $filetable = Post::findOrFail($id);
 
-        $filetable->update([
-          'isActive' => 'Active'
-        ]);
+        $active = '1';
+        $filetable->isActive = $request->input('$isActive', $active);
+        $filetable->save();
 
-        return redirect('/filetable')->with('success', $ID);
+        return redirect('/filetable')->with('success', $id);
+      }
+
+
+      public function export()
+      {
+          return Excel::download(new Exports, 'smdi-library.xlsx');
+      }
+
+      public function exportSolo($id)
+      {
+        $data = Post::findOrFail($id);
+
+          dd($data);
+
+          return redirect('/filetable')->with('data', $data);
+
+          // $excelArray = [$id]
+          // return Excel::download(new Exports, 'smdi-library.xlsx');
+          // return (new Exports)->forId(1)->download('invoices.xlsx');
+          // return redirect('/filetable/{id}');
       }
 
 }

@@ -8,7 +8,7 @@ class PagesController extends Controller
 {
     public function index()
     {
-      $title = 'Welcome to Home Page!';
+      $title = 'SMDI Library!';
       return view('pages.home')->with('title', $title);
     }
 
@@ -16,6 +16,12 @@ class PagesController extends Controller
     public function create()
     {
       $title = 'Create new File!';
-      return view('pages.create', compact('title'));
+      return view('filetable.create', compact('title'));
     }
+
+    // public function edit()
+    // {
+    //   $title = 'Update File!';
+    //   return view('filetable.edit', compact('title'));
+    // }
 }

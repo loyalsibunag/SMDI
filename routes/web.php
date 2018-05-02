@@ -11,10 +11,20 @@
 |
 */
 
-Route::get('/', 'PagesController@index');
-Route::get('/home', 'PagesController@home');
+Route::get('/', 'PostsController@bilang');
+Route::get('/edit', 'PostsController@edit');
 Route::get('/create', 'PagesController@create');
-
+Route::put('filetable/{id}/edit', '@PostsController@update');
 Route::resource('filetable', 'PostsController');
 
-Route::Patch('filetable/reactivate/{id}','PostsController@reactivate');
+Route::put('filetable/reactivate/{id}','PostsController@reactivate');
+Route::put('filetable/deactivate/{id}', 'PostsController@destroy');
+
+#file handling
+Route::get('importExport', 'PostsController@importExport');
+
+Route::get('export', 'PostsController@export');
+Route::get('exportSolo/{id}', 'PostsController@exportSolo');
+
+Route::post('importExcel', 'MaatwebsiteDemoController@importExcel');
+Route::post('importExcel', 'MaatwebsiteDemoController@importExcel');

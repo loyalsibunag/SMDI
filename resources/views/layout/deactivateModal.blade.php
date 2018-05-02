@@ -11,7 +11,7 @@
                 Are you sure you want to deactivate this item ? All items included in this record will also be deactivated.
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-warning pull-left" data-dismiss="modal">Close</button>
                 <button id="deactivate" type="button" class="btn btn-danger">Deactivate</button>
             </div>
         </div>

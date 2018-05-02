@@ -11,7 +11,7 @@
                 Are you sure you want to reactivate this record?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-warning pull-left" data-dismiss="modal">Close</button>
                 <button id="reactivate" type="button" class="btn btn-info">Reactivate</button>
             </div>
         </div>
