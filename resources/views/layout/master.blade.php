@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }} | @yield('title')</title>
-
+    <link rel="icon" href="http://www.smdiconsultants.com/main/wp-content/uploads/2015/06/SMDI-icon.png">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"> --}}
 
@@ -17,11 +17,8 @@
 
 
 </head>
-<body style="background-image: url(http://www.smdiconsultants.com/main/wp-content/uploads/2015/06/city-bg-web41.jpg);
-background-repeat: no-repeat;
-background-position: center;
-background-size: cover;">
-  <nav class="navbar navbar" style="background: rgba(0, 0, 0, .75);">
+<body style="background-image: url(http://www.smdiconsultants.com/main/wp-content/uploads/2015/06/city-bg.jpg);background-repeat: no-repeat;background-position: center;background-size: cover;">
+  <nav class="navbar navbar" style="background: rgba(255, 255, 255, .75); padding:10px; border-radius:0px;">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
@@ -31,53 +28,53 @@ background-size: cover;">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/" style="color: lightblue;">SMDI consultants inc.</a>
+                <!-- <a class="navbar-brand" href="/" style="color: lightblue;">SMDI consultants inc.</a> -->
+                <a class="navbar-brand" href="/" ><img style= "width:140px; height:65px;margin-top:-21px; "class="default" src="http://www.smdiconsultants.com/main/wp-content/uploads/2016/01/logo-smdi.png" alt="SMDI Consultants, Inc." / height="90px" width="150px"></a>
             </div>
             <div>
-                <ul class="nav navbar-nav">
-                    <li>
-                      <a class="active" href="/filetable" style="color: blue;">Active</a>
-                    </li>
-                </ul>
-                <ul class="nav navbar-nav">
-                  <li>
-                    <a style="color:gold;">Legend: </a>
+              <ul class="nav navbar-nav">
+                  <li style="margin-top:15px;margin-left:60px;">
+                    <p style="color:black;">Legend: </p>
                   </li>
-                </ul>
-                <ul class="nav navbar-nav">
+             </ul>
+                <ul class="nav navbar-nav" style="margin-left:20px; margin-top:5px;" >
                   <li>
-                    <a style="color:black;" type="button" class="btn btn-primary btn-sm">
-                        <i class="glyphicon glyphicon-edit"> </i><span style="color:black;"> Edit Record</span>
+                    <a style="color:black;background-color:rgba(51,122, 183, .5);border-radius:3px; padding:10px" >
+                        <i class="glyphicon glyphicon-edit"> </i><span style="color:black;font-size:12px;"> Edit Record</span>
                     </a>
                   </li>
                 </ul>
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav" style="margin-top:5px;">
                   <li>
-                    <a style="color:black;" class="btn btn-info btn-sm"><i class="glyphicon glyphicon-eye-open">
-                    </i><span style="color:black;"> Show Record</span></a>
+                    <a style="color:black;background-color:rgba(91,192, 222, .5);border-radius:3px; padding:10px"><i class="glyphicon glyphicon-eye-open">
+                    </i><span style="color:black;font-size:12px;"> Show Record</span></a>
                   </li>
                 </ul>
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav" style="margin-top:5px;">
                   <li>
-                    <a style="color:black;" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash">
-                    </i><span style="color:black;"> Deactivate Record</span></a>
+                    <a style="color:black;background-color:rgba(217, 83, 79, .5);border-radius:3px; padding:10px"><i class="glyphicon glyphicon-trash">
+                    </i><span style="color:black;font-size:12px;"> Deactivate Record</span></a>
                   </li>
                 </ul>
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav" style="margin-top:5px;">
                   <li class="nav navbar-nav">
-                    <a style="color:black;" class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-refresh">
-                    </i><span style="color:black;"> Reactivate Record</span></a>
+                    <a style="color:black;background-color:rgba(240, 173, 78, .5);border-radius:3px; padding:10px"><i class="glyphicon glyphicon-refresh">
+                    </i><span style="color:black;font-size:12px;"> Reactivate Record</span></a>
                   </li>
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
-                  <li class="nav navbar-nav navbar-right">
-                    <a href="{{ url('export') }}">
-                      <button class="btn btn-default" style="color:yellow; background:gray;">Download Excel
+
+                <ul class="nav navbar-nav navbar-right" >
+                  <li class="nav navbar-nav navbar-right" >
+                      <a  href="{{ url('export') }}" class="btn btn-default" style="color:gold;text-shadow: 1px 1px 2px black; background:rgba(0, 0, 0, 0.8);">Download Excel
                         <i class="glyphicon glyphicon-circle-arrow-down"></i>
-                      </button>
                     </a>
                   </li>
                 </ul>
+                <ul class="nav navbar-nav navbar-right" style="margin-right:10px;">
+                     <li>
+                       <a class="btn btn-success" href="/filetable" style="color:white;background-color: rgba(0, 150, 0, 0.8);text-shadow: 0px 1px 2px gray; "> Active Records <i style="color: white;" class="glyphicon glyphicon-ok-sign"> </i></a>
+                     </li>
+               </ul>
             </div>
         </div>
     </nav>
@@ -86,7 +83,7 @@ background-size: cover;">
         <header class="main-header">
           <div class="container">
             <div class="row align-items-center">
-              <a class="navbar-brand" href="/filetable" ><img class="default" src="http://www.smdiconsultants.com/main/wp-content/uploads/2016/01/logo-smdi.png" alt="SMDI Consultants, Inc." / height="90px" width="150px"></a>
+              <!-- <a class="navbar-brand" href="/filetable" ><img class="default" src="http://www.smdiconsultants.com/main/wp-content/uploads/2016/01/logo-smdi.png" alt="SMDI Consultants, Inc." / height="90px" width="150px"></a> -->
             </div>
         </div>
         </header>
@@ -106,11 +103,6 @@ background-size: cover;">
             <!-- /.content -->
         </div>
   </div>
-{{-- <script type="text/javascript">
-  function init() {
-  document.body.style.background = "cyan";
-  }
-</script> --}}
 <footer class="main-footer">
     <strong>Copyright © 2018 <a href="http://smdiconsultants.com">SMDI-Consultants</a>.</strong> All rights reserved.
 </footer>

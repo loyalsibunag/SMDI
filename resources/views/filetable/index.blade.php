@@ -4,7 +4,7 @@
 @stop --}}
 
 @section('content')
-</br>
+
     <div class="col-md-12">
         <div class="box">
             <div class="box-header with-border">
@@ -13,16 +13,15 @@
                   <div class="row justify-content-end">
                     <center>
                     <div class="form-inline box-tools">
-                      <input class="form-control col-9" type="text" placeholder="Search" aria-label="Search" name="s" id="search">
+                      <input style="width:400px;" class="form-control col-9" type="text" placeholder="Search" aria-label="Search" name="s" id="search">
                           <button class="btn btn-info" type="submit">Search
                             <i class="glyphicon glyphicon-search"></i>
                           </button>
+                          <label class="checkbox-inline pull-left" style="margin-left: -20px; background-color: rgba(255, 0, 0, 0.3);color:black;padding:5px;padding-left:25px; border-radius:3px"><input type="checkbox" id="showDeactivated" name="showDeactivated"> Show<strong> DEACTIVATED </strong>records</label>
+                          <a style="margin-right: -25px;" href="/filetable/create" class="btn btn-success pull-right" title="New Record"data-toggle="tooltip" data-placement="top">
+                            New Record <i class="glyphicon glyphicon-plus-sign"></i>
+                          </a>
                     </div>
-                    <br/>
-                        <a href="/filetable/create" class="btn btn-success pull-right" title="New Record"data-toggle="tooltip" data-placement="top">
-                          New Record <i class="glyphicon glyphicon-hand-up"></i>
-                        </a>
-                        <label class="checkbox-inline pull-left" style="background-color: gray;color:black;"><input type="checkbox" id="showDeactivated" name="showDeactivated"> Show<strong> DEACTIVATED </strong>records</label>
 
                   </center>
                   </div>
@@ -32,42 +31,43 @@
             <div class="box-body dataTable_wrapper">
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="activeTable">
-                        <table id="table" class="table table-bordered table-striped table-responsive" style="border-color: blue;">
-                          <thead class="thead-inverse">
-                                <tr style="color: black;background:gray;">
-                                    <th scope="row">Station Code</th>
-                                    <th>Station Name</th>
-                                    <th>Location</th>
-                                    <th>Month</th>
-                                    <th>Day</th>
-                                    <th>Year</th>
-                                    {{-- <th>Weather</th>
+                        <table id="table" class="table table-bordered table-striped table-responsive" style="width:1220px;border-color: rgba(255,0,0,.3); margin-left: -35px;">
+                          <thead>
+                                <tr style="color: black;background-color:rgba(255, 0, 0, 0.4);">
+                                    <th style="border-color: rgba(255,0,0,.3);" scope="row">Station Code</th>
+                                    <th style="border-color: rgba(255,0,0,.3);">Station Name</th>
+                                    <th style="border-color: rgba(255,0,0,.3);">Location</th>
+                                    <th style="border-color: rgba(255,0,0,.3);">Month</th>
+                                    <th style="border-color: rgba(255,0,0,.3);">Day</th>
+                                    <th style="border-color: rgba(255,0,0,.3);">Year</th>
+                                    {{-- <th >Weather</th>
                                     <th>PC</th>
                                     <th>Client</th>
                                     <th>Type</th>
                                     <th>Longitude</th>
                                     <th>Latitude</th> --}}
-                                    <th class="text-right">Action</th>
+                                    <th style="border-color: rgba(255,0,0,.3);" class="text-center">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($filetable as $value)
-                                    <tr class="success" style="color:black;">
-                                        <td>{{$value->Station_Code}}</td>
-                                        <td>{{$value->Station_Name}}</td>
-                                        <td>{{$value->Location}}</td>
-                                        <td>{{$value->Month}}</td>
-                                        <td>{{$value->Day}}</td>
-                                        <td>{{$value->Year}}</td>
+                                    <tr style="color:black;background:rgba(255,255,255,.9);border-color: black;">
+                                        <td style="border-color: rgba(255,0,0,.3);">{{$value->Station_Code}}</td>
+                                        <td style="border-color: rgba(255,0,0,.3);">{{$value->Station_Name}}</td>
+                                        <td style="border-color: rgba(255,0,0,.3);">{{$value->Location}}</td>
+                                        <td style="border-color: rgba(255,0,0,.3);">{{$value->Month}}</td>
+                                        <td style="border-color: rgba(255,0,0,.3);">{{$value->Day}}</td>
+                                        <td style="border-color: rgba(255,0,0,.3);">{{$value->Year}}</td>
                                         {{-- <td>{{$value->Weather}}</td>
                                         <td>{{$value->PC}}</td>
                                         <td>{{$value->Client}}</td>
                                         <td>{{$value->Type}}</td>
                                         <td>{{$value->Longitude}}</td>
                                         <td>{{$value->Latitude}}</td> --}}
-                                        <td class="form-inline">
+                                        <td style="border-color: rgba(255,0,0,.3);"class="form-inline">
                                             {{-- EDIT --}}
-                                            <a href="{{'/filetable/'.$value->id.'/edit'}}" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Update record" height="300px" width="300px">
+
+                                            <a "href="{{'/filetable/'.$value->id.'/edit'}}" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Update record" height="300px" width="300px">
                                                 <i class="glyphicon glyphicon-edit"></i>
                                             </a>
                                             {{-- SHOW --}}
@@ -111,40 +111,40 @@
 
                     </div>
                     <div role="tabpanel" class="tab-pane" id="inactiveTable">
-                        <table id="dlist" class="table table-striped table-bordered responsive">
+                        <table id="dlist" class="table table-striped table-bordered responsive" style="width:1220px; margin-left: -35px;border-color: rgba(255,0,0,.3);">
                             <thead>
-                                <tr style="color:black; background:gray;">
-                                  <th scope="row">Station Code</th>
-                                  <th>Station Name</th>
-                                  <th>Location</th>
-                                  <th>Month</th>
-                                  <th>Day</th>
-                                  <th>Year</th>
-                                  <th>Weather</th>
-                                  <th>PC</th>
-                                  <th>Client</th>
-                                  <th>Type</th>
-                                  <th>Longitude</th>
-                                  <th>Latitude</th>
-                                  <th class="text-right">Action</th>
+                                <tr style="color: black;background-color:rgba(255, 0, 0, 0.4);">
+                                  <th style="border-color: rgba(255,0,0,.3);"scope="row">Station Code</th>
+                                  <th style="border-color: rgba(255,0,0,.3);">Station Name</th>
+                                  <th style="border-color: rgba(255,0,0,.3);">Location</th>
+                                  <th style="border-color: rgba(255,0,0,.3);">Month</th>
+                                  <th style="border-color: rgba(255,0,0,.3);">Day</th>
+                                  <th style="border-color: rgba(255,0,0,.3);">Year</th>
+                                  <th style="border-color: rgba(255,0,0,.3);">Weather</th>
+                                  <th style="border-color: rgba(255,0,0,.3);">PC</th>
+                                  <th style="border-color: rgba(255,0,0,.3);">Client</th>
+                                  <th style="border-color: rgba(255,0,0,.3);">Type</th>
+                                  <th style="border-color: rgba(255,0,0,.3);">Longitude</th>
+                                  <th style="border-color: rgba(255,0,0,.3);">Latitude</th>
+                                  <th style="border-color: rgba(255,0,0,.3);" class="text-right">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($deactivate as $value)
-                                    <tr class="danger" style="color:black;">
-                                      <td>{{$value->Station_Code}}</td>
-                                      <td>{{$value->Station_Name}}</td>
-                                      <td>{{$value->Location}}</td>
-                                      <td>{{$value->Month}}</td>
-                                      <td>{{$value->Day}}</td>
-                                      <td>{{$value->Year}}</td>
-                                      <td>{{$value->Weather}}</td>
-                                      <td>{{$value->PC}}</td>
-                                      <td>{{$value->Client}}</td>
-                                      <td>{{$value->Type}}</td>
-                                      <td>{{$value->Longitude}}</td>
-                                      <td>{{$value->Latitude}}</td>
-                                      <td class="text-right">
+                                    <tr style="color:black;background:rgba(253,194,181,.9);border-color: black;">
+                                      <td style="border-color: rgba(255,0,0,.3);">{{$value->Station_Code}}</td>
+                                      <td style="border-color: rgba(255,0,0,.3);">{{$value->Station_Name}}</td>
+                                      <td style="border-color: rgba(255,0,0,.3);">{{$value->Location}}</td>
+                                      <td style="border-color: rgba(255,0,0,.3);">{{$value->Month}}</td>
+                                      <td style="border-color: rgba(255,0,0,.3);">{{$value->Day}}</td>
+                                      <td style="border-color: rgba(255,0,0,.3);">{{$value->Year}}</td>
+                                      <td style="border-color: rgba(255,0,0,.3);">{{$value->Weather}}</td>
+                                      <td style="border-color: rgba(255,0,0,.3);">{{$value->PC}}</td>
+                                      <td style="border-color: rgba(255,0,0,.3);">{{$value->Client}}</td>
+                                      <td style="border-color: rgba(255,0,0,.3);">{{$value->Type}}</td>
+                                      <td style="border-color: rgba(255,0,0,.3);">{{$value->Longitude}}</td>
+                                      <td style="border-color: rgba(255,0,0,.3);">{{$value->Latitude}}</td>
+                                      <td style="border-color: rgba(255,0,0,.3);" class="text-right">
                                           <button onclick="reactivateShow({{$value->id}})"type="button" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="Reactivate record">
                                               <i class="glyphicon glyphicon-refresh"></i>
                                           </button>

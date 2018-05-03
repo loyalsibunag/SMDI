@@ -29,10 +29,10 @@ class PostsController extends Controller
 
         $filetable = Post::where('isActive', 1)
         ->search($s)
-        ->paginate(12);
+        ->paginate(14);
         $deactivate = Post::where('isActive',0)
         ->search($s)
-        ->paginate(5);
+        ->paginate(14);
         return View('filetable.index', compact('filetable', 'deactivate', '$s'));
     }
 
