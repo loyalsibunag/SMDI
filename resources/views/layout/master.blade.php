@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ config('app.locale') }}">
 <head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,13 +9,78 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }} | @yield('title')</title>
+    <title>{{ config('app.name', 'Laravel') }} | @yield('title') Station Library</title>
     <link rel="icon" href="http://www.smdiconsultants.com/main/wp-content/uploads/2015/06/SMDI-icon.png">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"> --}}
 
     {{-- <link rel="stylesheet" href="http://www.atlasestateagents.co.uk/css/tether.min.css"> --}}
+    <style>
+        #btnActiveRec:hover{
+          background-color: green;
+          border-radius: 4px;
+          box-shadow: 2px 1px 1px black;
+        }
+        #txtActive:hover{
+          text-shadow: 1px 1px 1px black;
+        }
+        #btnDownload:hover{
+          border-radius: 4px;
+          box-shadow: 2px 1px 1px black;
+        }
+        #txtDownload:hover{
+          text-shadow: 1px 1px 1px gray;
+        }
+        .carousel-inner > .item{
 
+          -webkit-transition: 0.6s ease-in-out left;
+          -moz-transition:0.6s ease-in-out left;
+          -o-transition:0.6s ease-in-out left;
+        }
+        #btnShow:hover{
+          border-radius: 4px;
+          box-shadow: 2px 1px 1px black;
+        }
+        #noActive:hover{
+          color: green;
+          text-shadow: 1px 1px 3px white;
+        }
+        #noInactive:hover{
+          color: red;
+          text-shadow: 1px 1px 3px white;
+        }
+        #txtShow:hover{
+          text-shadow: 1px 0px 2px white;
+        }
+        #createNewFile{
+          width:55%;
+          background-color: white;
+          padding: 1%;
+          border-radius: 4px;
+          box-shadow: 5px 2px 7px black;
+          margin:auto;
+        }
+        ::placeholder{
+          color:black;
+          font-family: Arial;
+          font-size: 90%;
+          opacity: .6;
+          font-weight: normal;
+          
+        }
+        .foo{
+          width: 100px;
+        }
+        input:focus {
+            padding:10px;
+        }
+        input[type=text] {
+            padding: 10px;
+            margin: 1px 0;
+            box-sizing: border-box;
+            font-weight: normal;
+        }
+    </style>
 
 </head>
 <body style="background-image: url(http://www.smdiconsultants.com/main/wp-content/uploads/2015/06/city-bg.jpg);background-repeat: no-repeat;background-position: center;background-size: cover;">
@@ -64,15 +130,15 @@
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right" >
-                  <li class="nav navbar-nav navbar-right" >
-                      <a  href="{{ url('export') }}" class="btn btn-default" style="color:gold;text-shadow: 1px 1px 2px black; background:rgba(0, 0, 0, 0.8);">Download Excel
-                        <i class="glyphicon glyphicon-circle-arrow-down"></i>
+                  <li id="btnDownload" class="nav navbar-nav navbar-right" >
+                      <a  onmouseover="" href="{{ url('export') }}" class="btn btn-default" style="color:gold;text-shadow: 1px 1px 2px black; background:rgba(0, 0, 0, 0.8);"><span id="txtDownload">Save All Records
+                        <i class="glyphicon glyphicon-circle-arrow-down"></i><span>
                     </a>
                   </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right" style="margin-right:10px;">
-                     <li>
-                       <a class="btn btn-success" href="/filetable" style="color:white;background-color: rgba(0, 150, 0, 0.8);text-shadow: 0px 1px 2px gray; "> Active Records <i style="color: white;" class="glyphicon glyphicon-ok-sign"> </i></a>
+                     <li id="btnActiveRec">
+                       <a class="btn btn-default" href="/filetable" style="color:white;background-color: rgba(0, 150, 0, 0.8);text-shadow: 0px 1px 2px gray; "><span id="txtActive"> Active Records <i style="color: white;" class="glyphicon glyphicon-ok-sign"> </i></span></a>
                      </li>
                </ul>
             </div>

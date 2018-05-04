@@ -1,7 +1,11 @@
 @extends('layout.master')
 
 @section('content')
-  </br></br></br>
+<div id="createNewFile">
+<center>
+<i style="font-size:380%; color:rgba(0, 0, 0, 0.2)" class="glyphicon glyphicon-file"></i>
+<h4><b>Update a Record</b></h4></center>
+<hr></hr>
     {!! Form::model($filetable , ['method' => 'Post', 'action' => ['PostsController@update',$filetable->id]]) !!}
     {!! method_field('put') !!}
     @include('filetable.form')

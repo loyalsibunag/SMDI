@@ -17,12 +17,11 @@
                           <button class="btn btn-info" type="submit">Search
                             <i class="glyphicon glyphicon-search"></i>
                           </button>
-                          <label class="checkbox-inline pull-left" style="margin-left: -20px; background-color: rgba(255, 0, 0, 0.3);color:black;padding:5px;padding-left:25px; border-radius:3px"><input type="checkbox" id="showDeactivated" name="showDeactivated"> Show<strong> DEACTIVATED </strong>records</label>
-                          <a style="margin-right: -25px;" href="/filetable/create" class="btn btn-success pull-right" title="New Record"data-toggle="tooltip" data-placement="top">
+                          <label class="checkbox-inline pull-left" style="margin-left: 1.2%; background-color: rgba(255, 0, 0, 0.3);color:black;padding:5px;padding-left:25px; border-radius:3px"><input type="checkbox" id="showDeactivated" name="showDeactivated"> Show<strong> DEACTIVATED </strong>records</label>
+                          <a style="margin-right: 1.2%;" href="/filetable/create" class="btn btn-success pull-right" title="New Record"data-toggle="tooltip" data-placement="top">
                             New Record <i class="glyphicon glyphicon-plus-sign"></i>
                           </a>
-                    </div>
-
+                    </>
                   </center>
                   </div>
                 </form>
@@ -31,7 +30,7 @@
             <div class="box-body dataTable_wrapper">
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="activeTable">
-                        <table id="table" class="table table-bordered table-striped table-responsive" style="width:1220px;border-color: rgba(255,0,0,.3); margin-left: -35px;">
+                        <table id="table" class="table table-bordered table-striped table-responsive" style="max-width:100%;border-color: rgba(255,0,0,.3); ">
                           <thead>
                                 <tr style="color: black;background-color:rgba(255, 0, 0, 0.4);">
                                     <th style="border-color: rgba(255,0,0,.3);" scope="row">Station Code</th>
@@ -67,7 +66,7 @@
                                         <td style="border-color: rgba(255,0,0,.3);"class="form-inline">
                                             {{-- EDIT --}}
 
-                                            <a "href="{{'/filetable/'.$value->id.'/edit'}}" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Update record" height="300px" width="300px">
+                                            <a href="{{'/filetable/'.$value->id.'/edit'}}" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Update record" height="300px" width="300px">
                                                 <i class="glyphicon glyphicon-edit"></i>
                                             </a>
                                             {{-- SHOW --}}
@@ -111,7 +110,7 @@
 
                     </div>
                     <div role="tabpanel" class="tab-pane" id="inactiveTable">
-                        <table id="dlist" class="table table-striped table-bordered responsive" style="width:1220px; margin-left: -35px;border-color: rgba(255,0,0,.3);">
+                        <table id="dlist" class="table table-striped table-bordered responsive" style="max-width:100%; border-color: rgba(255,0,0,.3);">
                             <thead>
                                 <tr style="color: black;background-color:rgba(255, 0, 0, 0.4);">
                                   <th style="border-color: rgba(255,0,0,.3);"scope="row">Station Code</th>
