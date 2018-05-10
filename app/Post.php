@@ -20,11 +20,11 @@ class Post extends Model
       ->orWhere('Month', 'like', '%' .$s. '%')
       ->orWhere('Day', 'like', '%' .$s. '%')
       ->orWhere('Year', 'like', '%' .$s. '%')
-      ->orWhere('Weather', 'like', '%' .$s. '%')
+      // ->orWhere('Weather', 'like', '%' .$s. '%')
       ->orWhere('PC', 'like', '%' .$s. '%')
-      ->orWhere('Client', 'like', '%' .$s. '%')
-      ->orWhere('Type', 'like', '%' .$s. '%')
-      ->orWhere('Longitude', 'like', '%' .$s. '%')
-      ->orWhere('Latitude', 'like', '%' .$s. '%');
+      ->orWhere('Client', 'like', '%' .$s. '%');
+      // ->orWhere('Type', 'like', '%' .$s. '%')
+      // ->orWhere('Longitude', 'like', '%' .$s. '%')
+      // ->orWhere('Latitude', 'like', '%' .$s. '%');
     }
 }

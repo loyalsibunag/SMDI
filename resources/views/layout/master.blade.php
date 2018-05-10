@@ -66,7 +66,7 @@
           font-size: 90%;
           opacity: .6;
           font-weight: normal;
-          
+
         }
         .foo{
           width: 100px;

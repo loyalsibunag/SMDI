@@ -1,5 +1,5 @@
 <div id="notif">
-    @if($errors->any())
+    <!-- @if($errors->any())
         <div class="alert alert-danger alert-dismissible fade in">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true" data-toggle="tooltip" title="Close">&times;</button>
             <h4><i class="icon fa fa-ban"></i> Something went wrong!</h4>
@@ -7,7 +7,7 @@
                 '<li>:message</li>'
             )) !!}
         </div>
-    @endif
+    @endif -->
     @if(Session::has('success'))
         <div id="successAlert" class="alert alert-info alert-dismissible fade in">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true" data-toggle="tooltip" title="Close">&times;</button>
