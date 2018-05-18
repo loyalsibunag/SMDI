@@ -94,16 +94,16 @@ function convertArrayOfObjectsToCSV(args) {
 
         data = args.data || null;
         if (data == null || !data.length) {
-            return null;
+            return ' ';
         }
 
-        columnDelimiter = args.columnDelimiter || ',';
+        columnDelimiter = args.columnDelimiter || '';
         lineDelimiter = args.lineDelimiter || '\n';
 
         keys = Object.keys(data[0]);
 
         result = '';
-        result += keys.join(columnDelimiter);
+        result += keys.join(lineDelimiter);
         result += lineDelimiter;
 
         data.forEach(function(item) {
